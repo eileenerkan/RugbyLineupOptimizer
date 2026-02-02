@@ -19,11 +19,14 @@ The script requires two CSV files:
 2. stint_data.csv: Must contain game stints including h_team, a_team, minutes, h_goals, a_goals, and player columns (home1-4, away1-4).
 
 ## Configuration
-You can customize the analysis directly in the script's configuration section (cell 2):
-- FOCAL_TEAM: The team you are optimizing for (e.g., "Canada").
-- OPPONENT: The team you are facing (e.g., "Sweden").
-- RATING_CAP: The maximum allowable sum of player ratings in a lineup.
-- ALPHA: The regularization strength for the Ridge model.
+### Coach Inputs (User Prompts)
+When the script runs, the coach is prompted to provide real-time constraints via the terminal:
+- Matchup Selection: Enter the FOCAL_TEAM and OPPONENT (e.g., Canada and Sweden).
+- Player Availability: Type the names of injured or sidelined players. Format: Names must match the CSV exactly (e.g., Canada_p2, Canada_p5).
+  - If no one is out, leave blank and press Enter.
+- Fatigue Management: Enter the names of tired players using the same Team_px format.
+    - If no one is tired, leave blank and press Enter.
+- Fatigue Penalty: If tired players were listed, enter a decimal (e.g., 0.2 for a 20% reduction). This lowers their performance score so the optimizer can evaluate if a fresh substitute is a better bet.
 
 ## Example Output
 | Scenario | Lineup | Total Value | Total Rating |
